@@ -1,0 +1,4 @@
+FirstName,LastName,Major,GPA
+Kyle,Jakoby,Art,3.0
+Bad,Student,English,Data,2.4
+Mary,Jones,Business,3.5

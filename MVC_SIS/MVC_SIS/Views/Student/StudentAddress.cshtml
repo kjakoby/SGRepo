@@ -1,0 +1,143 @@
+﻿@*@model IEnumerable<Exercises.Models.Data.Address>*@
+@model Exercises.Models.Data.Student
+
+@{
+    ViewBag.Title = "Student Address";
+}
+
+@*<div class="row">
+        <div class="col-xs-12 col-sm-3">
+            @Html.Partial("StudentNav")
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h4>Student Address</h4>
+                    <p>@Html.ActionLink("Add an Address", "AddAddress", "Student", null, new { @class = "btn btn-primary" })</p>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Street Address</th>
+                                <th>Street Address 2</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Postal Code</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Count() == 0)
+                            {
+                                <tr>
+                                    <td><b>N/A</b></td>
+                                    <td><b>N/A</b></td>
+                                    <td><b>N/A</b></td>
+                                    <td><b>N/A</b></td>
+                                    <td><b>N/A</b></td>
+                                    <td><b>N/A</b></td>
+                                    <td><b>N/A</b></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                foreach (var address in Model)
+                                {
+                                    <tr>
+                                        <td>@address.Street1</td>
+                                        <td>@address.Street2</td>
+                                        <td>@address.City</td>
+                                        <td>@address.State.StateName</td>
+                                        <td>@address.PostalCode</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "EditAddress", "Student", new { id = address.AddressId }, null)
+                                        </td>
+                                        <td>
+
+                                            deletes the whole student
+
+                                            @using (Html.BeginForm("Delete", "Student", new { id = address.AddressId }, FormMethod.Post))
+                                            {
+                                                <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete (address)?');">Delete</button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<div class="row">
+    <div class="col-xs-12 col-sm-3">
+        @Html.Partial("StudentNav")
+    </div>
+    <div class="col-xs-12 col-sm-9">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Address List for: <b>@Model.FirstName @Model.LastName</b></h3>
+                <p>@Html.ActionLink("Add an Address", "AddAddress", "Student", new { id = Model.StudentId }, new { @class = "btn btn-primary" })</p>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Street Address</th>
+                            <th>Street Address 2(optional)</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Postal Code</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Address.Count() == 0)
+                        {
+                        <tr>
+                            This student has no address associated to them!
+                        </tr>
+                        }
+                        else
+                        {
+                            foreach (var address in Model.Address)
+                            {
+
+
+                                <tr>
+                                    <td>@address.Street1</td>
+                                    <td>@address.Street2</td>
+                                    <td>@address.City</td>
+                                    <td>@address.State.StateName</td>
+                                    <td>@address.PostalCode</td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "EditAddress", "Student", new { studentId = Model.StudentId, addressId = address.AddressId }, null)
+                                    </td>
+                                    <td>
+                                        @*@Html.ActionLink("Delete", "DeleteAddress", "Student", new { studentId = Model.StudentId, addressId = address.AddressId }, null)*@
+
+
+                                        @*deletes the whole student*@
+
+                                            @using (Html.BeginForm("DeleteAddress", "Student", new { studentId = Model.StudentId, addressId = address.AddressId }, FormMethod.Post))
+                                            {
+                                                <button class="btn btn-danger" onclick="return confirm('Are you sure you want to delete @address.Street1?');">Delete</button>
+                                            }
+                                    </td>
+                                </tr>
+
+                                    @*foreach (var address in Model)
+                                        {*@
+
+                            }
+                        }
+                    </tbody>
+                </table>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

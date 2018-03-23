@@ -1,0 +1,23 @@
+﻿@model Exercises.Models.ViewModels.AddressVM
+@{
+    ViewBag.Title = "Delete Address";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Delete Address</h3>
+        @*@Html.ActionLink("Return to List", "StudentAddress", "Admin")*@
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(m => m.Address.AddressId)
+            <p>Are you sure that you wish to delete the address: <b>@Html.DisplayFor(m => m.Address.Street1)</b>?</p>
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+            @Html.ActionLink("Cancel", "Student", null, new { @class = "btn btn-sm btn-info" })
+        }
+    </div>
+</div>
+

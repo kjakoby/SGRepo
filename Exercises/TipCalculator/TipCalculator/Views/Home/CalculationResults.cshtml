@@ -1,0 +1,30 @@
+﻿@model TipCalculator.Models.TipCalculation
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CalculationResults</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <h1>Calculated Percents for: @Model.Total</h1>
+                <p>10%: @Model.TenPercent</p>
+                <p>15%: @Model.FifteenPercent</p>
+                <p>20%: @Model.TwentyPercent</p>
+            </div>
+            <p>Click <a href="/Home/Index">Here</a> to go back to the Home Page.</p>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <Title></Title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/mystyles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Vending Machine</h1>
+        <hr/>
+        <ul class="list-group" id="errorMessages"></ul>
+        <div class="row">
+            <div class="col-md-9" id="selectionPanel">
+
+            </div>
+
+            <div class="col-md-3" id="moneyMessagePanel">
+                    <div class="col-md-12" id="moneyInput">
+                        <div class="col-sm-12" id="moneyRow" style="text-align:center">
+                            <h3>Total $ In</h3>
+                        </div>
+
+                        <div id="moneyRow" class="col-sm-12">
+                            <input type="text" class="col-sm-offset-3 col-sm-6" name="totalAmount" id="totalAmount" value="0" style="text-align:center" readonly>
+                        </div>
+
+                        <div id="moneyRow" class="col-sm-12">
+                            <button type="button" id="dollarButton" class="col-sm-6 btn btn-default">Add Dollar</button>
+                            <button type="button" id="quarterButton" class="col-sm-6 btn btn-default">Add Quarter</button>
+                            <button type="button" id="dimeButton" class="col-sm-6 btn btn-default">Add Dime</button>
+                            <button type="button" id="nickelButton" class="col-sm-6 btn btn-default">Add Nickel</button>
+                        </div>
+                    </div>
+                    <hr/>
+                    
+                    <div id="messageOutput" class="col-sm-12">
+                            <div class="col-sm-12" id="moneyRow" style="text-align:center">
+                            <h3>Messages</h3>
+                            </div>
+
+                            <div class="col-sm-12" id="moneyRow">
+                                <input type="text" class="col-sm-12" name="message" id="message" value="Pick an item" style="text-align:center" readonly>
+                            </div>
+
+                            <div id="moneyRow" class="col-sm-12">
+                                <div class="col-sm-3">
+                                    Item:
+                                </div>
+
+                                <input type="text" class="col-sm-9" name="itemBox" id="itemBox" value=" " style="text-align:center" readonly>
+                            </div>
+
+                            <div class="col-sm-12" id="moneyRow">
+                                    <button type="button" id="purchaseButton" class="col-sm-12 btn btn-default">Make Purchase</button>
+                            </div>
+                    </div>
+                    <hr/>
+                    
+                    <div id="changeOutput" class="col-sm-12">
+                            <div class="col-sm-12" id="moneyRow" style="text-align:center">
+                                <h3>Change</h3>
+                            </div>
+
+                            <div class="col-sm-12" id="moneyRow">
+                                <input type="text" class="col-sm-12" name="changeBox" id="changeBox" style="text-align:center" readonly>
+                            </div>
+                        
+                            <div id="moneyRow" class="col-sm-12">
+                                    <button type="button" id="changeReturnButton" class="col-sm-offset-2 col-sm-8 btn btn-default">Change Return</button>
+                            </div>
+
+                            <div id="moneyRow" class="col-sm-12">
+                                    <button type="button" id="takeChangeButton" class="col-sm-offset-2 col-sm-8 btn btn-default">Take Change</button>
+                            </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/home.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-3">
+        @Html.Partial("StudentNav")
+    </div>
+    <div class="col-xs-12 col-sm-9">
+        <p>
+            This is the student area of the web site.  We can list, add, edit, and delete student information here.
+        </p>
+        <h3>@Html.ActionLink("List of Students", "List", "Student")</h3>
+        <p>This will show a list of the current students enrolled.</p>
+        <h3>@Html.ActionLink("Add a Student", "Add", "Student")</h3>
+        <p>This will let you add a new student to the list of students enrolled.</p>
+        @*<h3>@Html.ActionLink("Edit a Student", "Edit", "Student")</h3>
+        <p>This will let you edit a student in the list of students enrolled.</p>
+        <h3>@Html.ActionLink("Remove a Student", "Remove", "Student")</h3>
+        <p>This will let you delete a student in the list of students enrolled.</p>*@
+    </div>
+</div>
+
