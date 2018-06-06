@@ -9,28 +9,126 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using CarDealership.UI.Models;
+using System.Threading.Tasks;
+using Microsoft.Owin.Security;
+using System.Security.Claims;
 
 namespace CarDealership.UI.App_Start
 {
-    public class IdentityConfig
+    //should be in Startup.Auth
+
+    //public class IdentityConfig
+    //{
+    //    public void Configuration(IAppBuilder app)
+    //    {
+    //        app.CreatePerOwinContext(() => new CarDealershipDbContext());
+
+    //        app.CreatePerOwinContext<UserManager<AppUser>>((options, context) =>
+    //            new UserManager<AppUser>(
+    //                new UserStore<AppUser>(context.Get<CarDealershipDbContext>())));
+
+    //        app.CreatePerOwinContext<RoleManager<AppRole>>((options, context) =>
+    //            new RoleManager<AppRole>(
+    //                new RoleStore<AppRole>(context.Get<CarDealershipDbContext>())));
+
+    //        app.UseCookieAuthentication(new CookieAuthenticationOptions
+    //        {
+    //            AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+    //            LoginPath = new PathString("/Account/Login"),
+    //        });
+    //    }
+    //}
+
+    public class EmailService : IIdentityMessageService
     {
-        public void Configuration(IAppBuilder app)
+        public Task SendAsync(IdentityMessage message)
         {
-            app.CreatePerOwinContext(() => new CarDealershipDbContext());
+            // Plug in your email service here to send an email.
+            return Task.FromResult(0);
+        }
+    }
 
-            app.CreatePerOwinContext<UserManager<AppUser>>((options, context) =>
-                new UserManager<AppUser>(
-                    new UserStore<AppUser>(context.Get<CarDealershipDbContext>())));
+    public class SmsService : IIdentityMessageService
+    {
+        public Task SendAsync(IdentityMessage message)
+        {
+            // Plug in your SMS service here to send a text message.
+            return Task.FromResult(0);
+        }
+    }
 
-            app.CreatePerOwinContext<RoleManager<AppRole>>((options, context) =>
-                new RoleManager<AppRole>(
-                    new RoleStore<AppRole>(context.Get<CarDealershipDbContext>())));
+    // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
+    public class ApplicationUserManager : UserManager<ApplicationUser>
+    {
+        public ApplicationUserManager(IUserStore<ApplicationUser> store)
+            : base(store)
+        {
+        }
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
+        {
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
+            // Configure validation logic for usernames
+            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Home/Login"),
+                AllowOnlyAlphanumericUserNames = false,
+                RequireUniqueEmail = true
+            };
+
+            // Configure validation logic for passwords
+            manager.PasswordValidator = new PasswordValidator
+            {
+                RequiredLength = 6,
+                RequireNonLetterOrDigit = true,
+                RequireDigit = true,
+                RequireLowercase = true,
+                RequireUppercase = true,
+            };
+
+            // Configure user lockout defaults
+            manager.UserLockoutEnabledByDefault = true;
+            manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            manager.MaxFailedAccessAttemptsBeforeLockout = 5;
+
+            // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
+            // You can write your own provider and plug it in here.
+            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
+            {
+                MessageFormat = "Your security code is {0}"
             });
+            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<ApplicationUser>
+            {
+                Subject = "Security Code",
+                BodyFormat = "Your security code is {0}"
+            });
+            manager.EmailService = new EmailService();
+            manager.SmsService = new SmsService();
+            var dataProtectionProvider = options.DataProtectionProvider;
+            if (dataProtectionProvider != null)
+            {
+                manager.UserTokenProvider =
+                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+            }
+            return manager;
+        }
+    }
+
+    // Configure the application sign-in manager which is used in this application.
+    public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    {
+        public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
+            : base(userManager, authenticationManager)
+        {
+        }
+
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        {
+            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+        }
+
+        public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
+        {
+            return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
 }

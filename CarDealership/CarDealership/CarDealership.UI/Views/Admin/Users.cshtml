@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CarDealership.Models.Queries.UserItem>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<div class="row mt-3">
+    <div class="col-12">
+        <h2>Users</h2>
+        @Html.ActionLink("Add a new User", "Users", "Admin")
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var user in Model)
+                {
+                    <tr>
+                        <td>@user.LastName</td>
+                        <td>@user.FirstName</td>
+                        <td>@user.Email</td>
+                        <td>@user.Role</td>
+                        <!--edit link-->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

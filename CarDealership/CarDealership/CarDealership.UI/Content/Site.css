@@ -23,15 +23,15 @@ textarea {
     max-width: 280px;
 }
 
-.recentListing {
-    text-align: center;
+.jumbotron {
+    background-image: url("../Images/jumbotronBackground.png");
+    background-size: cover;
 }
 
-.sidenav {
-    border: 1px solid black;
-    margin-top: 20px;
+#detailsBox {
+    border: solid
 }
 
-.sidenav ul {
-    list-style: none;
+#specialsBox {
+    border: solid
 }

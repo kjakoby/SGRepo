@@ -1,0 +1,73 @@
+﻿@model CarDealership.UI.Models.InventoryReportViewModel
+
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<div class="mt-3">
+    <div class="row mb-3">
+        <h2>Inventory Report</h2>
+    </div>
+    <div class="row mb-1">
+        <h4>New Vehicles</h4>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <table class="mb-3">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Count</th>
+                        <th>Stock Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.NewInventory)
+                    {
+                        <tr>
+                            <td>@item.Year</td>
+                            <td>@item.MakeName</td>
+                            <td>@item.ModelName</td>
+                            <td>@item.Count</td>
+                            <td>@item.StockValue.ToString("c")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mb-1">
+        <h4>Used Vehicles</h4>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Count</th>
+                        <th>Stock Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model.UsedInventory)
+                    {
+                        <tr>
+                            <td>@item.Year</td>
+                            <td>@item.MakeName</td>
+                            <td>@item.ModelName</td>
+                            <td>@item.Count</td>
+                            <td>@item.StockValue.ToString("c")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CarDealership.Models.Queries.SpecialsItem>
+
+@{
+    ViewBag.Title = "Specials";
+}
+
+<div class="row-mt-3">
+    <div class="col-12">
+        <h2>Specials</h2>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="col-12 mt-3 mb-3" id="specialsBox">
+            <div class="row">
+                <div class="col col-sm-1">
+                    <img src="~/Images/money-bag.png" alt="@item.SpecialTitle" height="100" width="100"/>
+                </div>
+                <div class="col col-sm-11">
+                    <div class="col-12">
+                        <p>@item.SpecialTitle</p>
+                    </div>
+                    <div class="col-12">
+                        <p>@item.SpecialDescription</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

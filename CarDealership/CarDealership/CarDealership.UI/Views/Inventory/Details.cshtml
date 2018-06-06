@@ -1,0 +1,66 @@
+﻿@model CarDealership.Models.Queries.VehicleDetailsItem
+
+@{
+    ViewBag.Title = "Vehicle Details";
+}
+
+@*<div class="row-mt-3">
+    <div class="col-12">
+        <h2>Vehicle Details</h2>
+    </div>
+</div>*@
+
+<body>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Vehicle Details</h2>
+        </div>
+    </div>
+    <div class="col" id="detailsBox">
+        <div class="row col-xs-12 pt-3 pl-3 pb-0">
+            <p>@Model.Year @Model.MakeName @Model.ModelName</p>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-lg-3 p-0">
+                <img src="@Url.Content("~/Images/" + Model.Picture)" class="card-img-top pt-0 pl-3" alt="@Model.Year @Model.MakeName @Model.ModelName" />
+            </div>
+            <div class="col-xs-12 col-lg-3">
+                <div class="col-12">
+                    <p>Body Style: @Model.BodyStyleName</p>
+                </div>
+                <div class="col-12">
+                    <p>Trans: @Model.TransmissionType</p>
+                </div>
+                <div class="col-12">
+                    <p>Color: @Model.ColorName</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-3">
+                <div class="col-12">
+                    <p>Interior: @Model.InteriorColor</p>
+                </div>
+                <div class="col-12">
+                    <p>Mileage: @Model.Mileage</p>
+                </div>
+                <div class="col-12">
+                    <p>VIN #: @Model.VIN</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-lg-3">
+                <div class="col-12">
+                    <p>Sales Price: @Model.SalesPrice.ToString("c")</p>
+                </div>
+                <div class="col-12">
+                    <p>MSRP: @Model.MSRP.ToString("c")</p>
+                </div>
+            </div>
+        </div>
+        <div class="row col-9 offset-3 pt-3">
+            <p class="pl-1">Description: @Model.Description</p>
+        </div>
+        <div class="row">
+            <div class="btn-group col-2 offset-10 pb-5" id="contactButton"><a href='@Url.Action("Contact", "Home")' class="btn btn-default btn-outline-dark btn-block">Contact Us</a></div>
+        </div>
+    </div>
+</body>
+

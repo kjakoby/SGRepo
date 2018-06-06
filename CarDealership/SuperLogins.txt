@@ -1,0 +1,11 @@
+Super Credentials
+--------------------------------------
+Role = Admin
+UserName = SuperAdmin
+Email = allmightyadmin@master.com
+Password = SA_b4_SM
+
+Role = Sales
+UserName = SuperSales
+Email = allmightysales@master.com
+Password = SS_b4_SM

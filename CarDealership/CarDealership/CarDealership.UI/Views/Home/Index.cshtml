@@ -1,7 +1,38 @@
-﻿
+﻿@model IEnumerable<CarDealership.Models.Queries.FeaturedItem>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
 
-<h2>Index</h2>
+@*horizontal line*@
+
+<div class="jumbotron mb-5">
+
+</div>
+<hr class="bg-dark"/>
+<div class="row-mt-3">
+    <div class="col-12">
+        <h2>Featured Vehicles</h2>
+    </div>
+    <div class="card-deck">
+        @foreach (var item in Model)
+        {
+            <div class="col col-xs-12 col-sm-4 col-md-3 mt-3 mb-3">
+                <div class="card h-100 text-center text-white bg-dark">
+                    @*<a href="@Url.Action("","")">*@
+                    <img src="@Url.Content("~/Images/" + item.Picture)" class="card-img-top p-3" alt="@item.Year @item.MakeName @item.ModelName" />
+                    <div class="card-body">
+                        <p class="mb-0">@item.Year @item.MakeName @item.ModelName</p>
+                        <p class="mb-0">@item.SalesPrice.ToString("c")</p>
+                        <p class="mb-0">@Html.ActionLink("Details", "Details", "Inventory", new { id = item.VehicleID }, null)</p>
+                    </div>
+                    @*</a>*@
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
 

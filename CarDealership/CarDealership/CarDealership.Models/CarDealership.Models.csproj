@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B22CE6C-759C-413F-9993-A6896F004EC3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarDealership.Models</RootNamespace>
+    <AssemblyName>CarDealership.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\FeaturedItem.cs" />
+    <Compile Include="Queries\InventoryReportItem.cs" />
+    <Compile Include="Queries\MakeItem.cs" />
+    <Compile Include="Queries\ModelItem.cs" />
+    <Compile Include="Queries\PurchaseItem.cs" />
+    <Compile Include="Queries\SalesReportItem.cs" />
+    <Compile Include="Queries\SearchResultsItem.cs" />
+    <Compile Include="Queries\SpecialsItem.cs" />
+    <Compile Include="Queries\UserItem.cs" />
+    <Compile Include="Queries\VehicleDetailsItem.cs" />
+    <Compile Include="Tables\BodyStyle.cs" />
+    <Compile Include="Tables\Color.cs" />
+    <Compile Include="Tables\Contact.cs" />
+    <Compile Include="Tables\Interior.cs" />
+    <Compile Include="Tables\Make.cs" />
+    <Compile Include="Tables\Model.cs" />
+    <Compile Include="Tables\Purchase.cs" />
+    <Compile Include="Tables\PurchaseType.cs" />
+    <Compile Include="Tables\Specials.cs" />
+    <Compile Include="Tables\Transmission.cs" />
+    <Compile Include="Tables\Type.cs" />
+    <Compile Include="Tables\Vehicle.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

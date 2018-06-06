@@ -6,14 +6,20 @@ using System.Web;
 
 namespace CarDealership.UI.Models
 {
-    public class LoginViewModel
-    {
-        [Required]
-        public string UserName { get; set; }
+    //should be in account view model
 
-        [Required]
-        public string Password { get; set; }
+    //public class LoginViewModel
+    //{
+    //    [Required]
+    //    [Display(Name = "UserName")]
+    //    public string UserName { get; set; }
 
-        public bool RememberMe { get; set; }
-    }
+    //    [Required]
+    //    [DataType(DataType.Password)]
+    //    [Display(Name ="Password")]
+    //    public string Password { get; set; }
+
+    //    [Display(Name ="Remember me?")]
+    //    public bool RememberMe { get; set; }
+    //}
 }

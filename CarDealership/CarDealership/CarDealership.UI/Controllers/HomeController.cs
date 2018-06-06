@@ -1,4 +1,7 @@
-﻿using CarDealership.UI.Models;
+﻿using CarDealership.Data.ADO;
+using CarDealership.Data.Factories;
+using CarDealership.Models.Tables;
+using CarDealership.UI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +15,50 @@ namespace CarDealership.UI.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var model = VehicleRepoFactory.GetRepository().GetFeatured();
+            return View(model);
         }
 
-        [AllowAnonymous]
-        public ActionResult Login()
-        {
-            var model = new LoginViewModel();
+        // TODO BEGIN
+        //needs to be moved to Account
 
+        //[AllowAnonymous]
+        //public ActionResult Login()
+        //{
+        //    var model = new LoginViewModel();
+
+        //    return View(model);
+        //}
+
+        //TODO END
+
+        [HttpGet]
+        public ActionResult Specials()
+        {
+            var model = SpecialsRepoFactory.GetRepository().GetList();
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Contact(Contact model)
+        {
+            var repo = ContactRepoFactory.GetRepository();
+
+            try
+            {
+                repo.Insert(model);
+                return View();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
         }
     }
 }

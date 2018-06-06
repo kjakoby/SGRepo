@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49E5A4AA-D972-40BF-874C-CE60D225C089}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarDealership.Data</RootNamespace>
+    <AssemblyName>CarDealership.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADO\BodyStyleRepositoryADO.cs" />
+    <Compile Include="ADO\ColorRepositoryADO.cs" />
+    <Compile Include="ADO\ContactRepositoryADO.cs" />
+    <Compile Include="ADO\InteriorRepositoryADO.cs" />
+    <Compile Include="ADO\InventoryRepositoryADO.cs" />
+    <Compile Include="ADO\MakeRepositoryADO.cs" />
+    <Compile Include="ADO\ModelRepositoryADO.cs" />
+    <Compile Include="ADO\PurchaseRepositoryADO.cs" />
+    <Compile Include="ADO\PurchaseTypeRepositoryADO.cs" />
+    <Compile Include="ADO\SpecialsRepositoryADO.cs" />
+    <Compile Include="ADO\TransmissionRepositoryADO.cs" />
+    <Compile Include="ADO\TypeRepositoryADO.cs" />
+    <Compile Include="ADO\UserRepositoryADO.cs" />
+    <Compile Include="ADO\VehicleRepositoryADO.cs" />
+    <Compile Include="Factories\BodyStyleRepoFactory.cs" />
+    <Compile Include="Factories\ColorRepoFactory.cs" />
+    <Compile Include="Factories\ContactRepoFactory.cs" />
+    <Compile Include="Factories\InteriorRepoFactory.cs" />
+    <Compile Include="Factories\InventoryRepoFactory.cs" />
+    <Compile Include="Factories\MakeRepoFactory.cs" />
+    <Compile Include="Factories\ModelRepoFactory.cs" />
+    <Compile Include="Factories\PurchaseRepoFactory.cs" />
+    <Compile Include="Factories\PurchaseTypeRepoFactory.cs" />
+    <Compile Include="Factories\SpecialsRepoFactory.cs" />
+    <Compile Include="Factories\TransmissionRepoFactory.cs" />
+    <Compile Include="Factories\TypeRepoFactory.cs" />
+    <Compile Include="Factories\VehicleRepoFactory.cs" />
+    <Compile Include="InMemory\BodyStyleMemoryRepo.cs" />
+    <Compile Include="InMemory\ColorMemoryRepo.cs" />
+    <Compile Include="InMemory\ContactMemoryRepo.cs" />
+    <Compile Include="InMemory\InteriorMemoryRepo.cs" />
+    <Compile Include="InMemory\InventoryMemoryRepo.cs" />
+    <Compile Include="InMemory\MakeMemoryRepo.cs" />
+    <Compile Include="InMemory\ModelMemoryRepo.cs" />
+    <Compile Include="InMemory\PurchaseMemoryRepo.cs" />
+    <Compile Include="InMemory\PurchaseTypeMemoryRepo.cs" />
+    <Compile Include="InMemory\SpecialsMemoryRepo.cs" />
+    <Compile Include="InMemory\TransmissionMemoryRepo.cs" />
+    <Compile Include="InMemory\TypeMemoryRepo.cs" />
+    <Compile Include="InMemory\VehicleMemoryRepo.cs" />
+    <Compile Include="Interfaces\IBodyStyleRepository.cs" />
+    <Compile Include="Interfaces\IColorRepository.cs" />
+    <Compile Include="Interfaces\IContactRepository.cs" />
+    <Compile Include="Interfaces\IInteriorRepository.cs" />
+    <Compile Include="Interfaces\IInventoryRepository.cs" />
+    <Compile Include="Interfaces\IMakeRepository.cs" />
+    <Compile Include="Interfaces\IModelRepository.cs" />
+    <Compile Include="Interfaces\IPurchaseRepository.cs" />
+    <Compile Include="Interfaces\IPurchaseTypeRepository.cs" />
+    <Compile Include="Interfaces\ISpecialsRepository.cs" />
+    <Compile Include="Interfaces\ITransmissionRepository.cs" />
+    <Compile Include="Interfaces\ITypeRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Interfaces\IVehicleRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarDealership.Models\CarDealership.Models.csproj">
+      <Project>{5b22ce6c-759c-413f-9993-a6896f004ec3}</Project>
+      <Name>CarDealership.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dapper\" />
+    <Folder Include="EF\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
